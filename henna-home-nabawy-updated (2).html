@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Henna — Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#c55757;        /* buttons / accents */
+      --brand-dark:#a44545;
+      --soft:#f3f6f5;         /* light background */
+      --text:#1e2328;
+      --muted:#6c757d;
+      --card-radius:1.25rem;
+      --img-rect-h: 220px;    /* default service-card image height */
+    }
+    body{font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji"; color:var(--text)}
+    a{ text-decoration:none }
+    .topbar{
+      background:#cf6666;
+      color:#fff;
+      font-size:.925rem;
+    }
+    .topbar a{ color:#fff; opacity:.95 }
+    /* NAVBAR */
+    .navbar{ box-shadow: 0 1px 0 rgba(0,0,0,.06); }
+    .navbar-brand img{
+      height:36px;              /* keep logo small like normal navbars */
+      width:auto;               /* never stretch */
+      object-fit:contain;
+    }
+    /* HERO */
+    .hero{
+      position:relative;
+      background: #6f8079;
+      color:#fff;
+      overflow:hidden;
+    }
+    .hero .bg-image{
+      position:absolute; inset:0;
+      background:url('https://picsum.photos/seed/wedding-hero/2000/1200') center/cover no-repeat;
+      opacity:.35;
+      filter:contrast(105%);
+    }
+    .hero .content{ position:relative; z-index:2; padding:6rem 0 5rem }
+    .btn-brand{
+      background:var(--brand);
+      color:#fff;
+      border:none;
+    }
+    .btn-brand:hover{ background:var(--brand-dark); color:#fff }
+    /* H-scroller for categories */
+    .cat-track{
+      display:grid;
+      grid-auto-flow:column;
+      grid-auto-columns: clamp(220px, 25vw, 260px);
+      gap:1.25rem;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding-bottom:.5rem;
+    }
+    .cat-card{ scroll-snap-align:start; border:none; border-radius:var(--card-radius); box-shadow:0 6px 14px rgba(0,0,0,.08) }
+    .img-cover{
+      width:100%;
+      height:100%;
+      object-fit:cover;     /* key: prevents stretching */
+    }
+    .ratio-1x1{ position:relative; width:100%; padding-top:100% }
+    .ratio-1x1 > img, .ratio-16x9 > img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:inherit;
+    }
+    .ratio-16x9{ position:relative; width:100%; padding-top:56.25% }
+    /* Service cards */
+    .service-card{ border:none; border-radius:var(--card-radius); box-shadow:0 6px 20px rgba(0,0,0,.08) }
+    .service-card .card-img-top{
+      height:var(--img-rect-h);
+      object-fit:cover;      /* never stretch */
+    }
+    /* Providers grid */
+    .provider-card{ border:none; border-radius:var(--card-radius); box-shadow:0 8px 18px rgba(0,0,0,.08) }
+    /* Fancy CTA box */
+    .cta-app{
+      background:#739a75;
+      color:#fff;
+      border-radius:2rem;
+      overflow:hidden;
+      position:relative;
+    }
+    .cta-app::after{
+      content:"";
+      position:absolute;
+      width:70vmin; height:70vmin;
+      bottom:-25vmin; right:-15vmin;
+      background:#47104d;
+      border-radius:50%;
+      opacity:.9;
+    }
+    /* Feature boxes (About) */
+    .feature{
+      border-radius:1.5rem;
+      color:#fff;
+      padding:2rem;
+      min-height:220px;
+    }
+    .feature-1{ background:#b56b80 }
+    .feature-2{ background:#b9b36f }
+    .feature-3{ background:#8a98bf }
+    footer a{ color:#2b2f34 }
+    .footer-mini{ color:#7a828a }
+    /* utility */
+    .badge-soft{
+      background: rgba(255,255,255,.75);
+      backdrop-filter:saturate(140%) blur(3px);
+      color:#223;
+      border-radius:1rem;
+      font-weight:600;
+    }
+    .shadow-soft{ box-shadow:0 10px 30px rgba(0,0,0,.12) }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar py-2">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div class="d-flex align-items-center gap-3">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-youtube"></i></a>
+        <span class="ms-2"><i class="bi bi-geo-alt me-1"></i>2464 Royal Ln. Mesa, New Jersey 45463</span>
+        <a class="ms-3" href="mailto:unreal@outlook.com"><i class="bi bi-envelope me-1"></i>unreal@outlook.com</a>
+      </div>
+      <div class="text-end">English</div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="https://picsum.photos/seed/henna-logo/140/40" alt="Henna Logo" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Wedding services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#providers">Providers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact-nabawy.html">Contact</a></li>
+        </ul>
+        <form class="d-flex me-3" role="search">
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          </div>
+        </form>
+        <a class="btn btn-brand me-2">Download App</a>
+        <a class="btn btn-outline-secondary me-2">Create Account</a>
+        <a class="btn btn-outline-secondary">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bg-image"></div>
+    <div class="container content">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h1 class="display-4 fw-bold">WELCOME</h1>
+          <p class="lead">Maxime recusandae nobis maxime recusandae nobis maxime recusandae nobis.</p>
+          <a class="btn btn-brand btn-lg px-4 mt-2">Get Started</a>
+        </div>
+        <div class="col-lg-5 text-center mt-4 mt-lg-0">
+          <span class="badge badge-soft px-3 py-2 fs-5">Peach</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES (circular photos) -->
+  <section class="py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h3 m-0">Popular Categories</h2>
+        <a href="#" class="link-primary">See all</a>
+      </div>
+
+      <div class="cat-track pb-2">
+        <!-- category item -->
+        <div class="card cat-card p-3">
+          <div class="ratio-1x1 rounded-4 overflow-hidden">
+            <img class="img-cover" src="https://picsum.photos/seed/photo-bridal/800/800" alt="Bridal">
+          </div>
+          <div class="text-center pt-3">
+            <div class="fw-semibold">Photography</div>
+            <small class="text-muted">Bridal</small>
+          </div>
+        </div>
+
+        <div class="card cat-card p-3">
+          <div class="ratio-1x1 rounded-4 overflow-hidden">
+            <img class="img-cover" src="https://picsum.photos/seed/photo-cake/800/800" alt="Cake">
+          </div>
+          <div class="text-center pt-3">
+            <div class="fw-semibold">Cakes</div>
+            <small class="text-muted">Sweet</small>
+          </div>
+        </div>
+
+        <div class="card cat-card p-3">
+          <div class="ratio-1x1 rounded-4 overflow-hidden">
+            <img class="img-cover" src="https://picsum.photos/seed/photo-flowers/800/800" alt="Flowers">
+          </div>
+          <div class="text-center pt-3">
+            <div class="fw-semibold">Flowers</div>
+            <small class="text-muted">Bouquets</small>
+          </div>
+        </div>
+
+        <div class="card cat-card p-3">
+          <div class="ratio-1x1 rounded-4 overflow-hidden">
+            <img class="img-cover" src="https://picsum.photos/seed/photo-dj/800/800" alt="DJ">
+          </div>
+          <div class="text-center pt-3">
+            <div class="fw-semibold">Music</div>
+            <small class="text-muted">DJ</small>
+          </div>
+        </div>
+
+        <div class="card cat-card p-3">
+          <div class="ratio-1x1 rounded-4 overflow-hidden">
+            <img class="img-cover" src="https://picsum.photos/seed/photo-venue/800/800" alt="Venue">
+          </div>
+          <div class="text-center pt-3">
+            <div class="fw-semibold">Venues</div>
+            <small class="text-muted">Halls</small>
+          </div>
+        </div>
+
+        <div class="card cat-card p-3">
+          <div class="ratio-1x1 rounded-4 overflow-hidden">
+            <img class="img-cover" src="https://picsum.photos/seed/photo-makeup/800/800" alt="Makeup">
+          </div>
+          <div class="text-center pt-3">
+            <div class="fw-semibold">Makeup</div>
+            <small class="text-muted">Artists</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR SERVICES -->
+  <section id="services" class="py-5 bg-light">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h3 m-0">Our Services</h2>
+        <a class="link-primary" href="#">See All Services</a>
+      </div>
+
+      <div class="row g-4">
+        <!-- service card -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card service-card h-100">
+            <img class="card-img-top" src="https://picsum.photos/seed/service1/900/650" alt="Service">
+            <div class="card-body">
+              <h5 class="card-title mb-1">Photographer</h5>
+              <div class="text-muted small mb-2">Category name</div>
+              <div class="text-warning mb-3">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+                <span class="text-muted small ms-1">(121)</span>
+              </div>
+              <a class="btn btn-outline-secondary w-100">View</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card service-card h-100">
+            <img class="card-img-top" src="https://picsum.photos/seed/service2/900/650" alt="Service">
+            <div class="card-body">
+              <h5 class="card-title mb-1">Photographer</h5>
+              <div class="text-muted small mb-2">Category name</div>
+              <div class="text-warning mb-3">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+                <span class="text-muted small ms-1">(121)</span>
+              </div>
+              <a class="btn btn-outline-secondary w-100">View</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card service-card h-100">
+            <img class="card-img-top" src="https://picsum.photos/seed/service3/900/650" alt="Service">
+            <div class="card-body">
+              <h5 class="card-title mb-1">Photographer</h5>
+              <div class="text-muted small mb-2">Category name</div>
+              <div class="text-warning mb-3">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+                <span class="text-muted small ms-1">(121)</span>
+              </div>
+              <a class="btn btn-outline-secondary w-100">View</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card service-card h-100">
+            <img class="card-img-top" src="https://picsum.photos/seed/service4/900/650" alt="Service">
+            <div class="card-body">
+              <h5 class="card-title mb-1">Photographer</h5>
+              <div class="text-muted small mb-2">Category name</div>
+              <div class="text-warning mb-3">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+                <span class="text-muted small ms-1">(121)</span>
+              </div>
+              <a class="btn btn-outline-secondary w-100">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN OUR PROVIDERS -->
+  <section id="providers" class="py-5">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-5">
+          <h2 class="display-5 fw-bold">Join<br>To Our Providers</h2>
+          <p class="lead mt-3">Numquam ut sed autem molestias quo voluptate voluptas. Esse eius dolorum velit molestiae quas voluptas. A aut animi iusto quam.</p>
+          <a class="btn btn-brand btn-lg px-4 mt-2">Join</a>
+        </div>
+        <div class="col-lg-7">
+          <div class="row g-4">
+            <!-- provider cards -->
+            <div class="col-6 col-md-4">
+              <div class="card provider-card p-2">
+                <div class="ratio-1x1 rounded-4 overflow-hidden">
+                  <img class="img-cover" src="https://picsum.photos/seed/makeup1/800/800" alt="Hala MakeUp Artist">
+                </div>
+                <div class="text-center p-3 pt-2">
+                  <span class="badge badge-soft px-3 py-2">Hala MakeUp Artist</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="card provider-card p-2">
+                <div class="ratio-1x1 rounded-4 overflow-hidden">
+                  <img class="img-cover" src="https://picsum.photos/seed/makeup2/800/800" alt="Hala MakeUp Artist">
+                </div>
+                <div class="text-center p-3 pt-2">
+                  <span class="badge badge-soft px-3 py-2">Hala MakeUp Artist</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="card provider-card p-2">
+                <div class="ratio-1x1 rounded-4 overflow-hidden">
+                  <img class="img-cover" src="https://picsum.photos/seed/makeup3/800/800" alt="Hala MakeUp Artist">
+                </div>
+                <div class="text-center p-3 pt-2">
+                  <span class="badge badge-soft px-3 py-2">Hala MakeUp Artist</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="card provider-card p-2">
+                <div class="ratio-1x1 rounded-4 overflow-hidden">
+                  <img class="img-cover" src="https://picsum.photos/seed/makeup4/800/800" alt="Hala MakeUp Artist">
+                </div>
+                <div class="text-center p-3 pt-2">
+                  <span class="badge badge-soft px-3 py-2">Hala MakeUp Artist</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="card provider-card p-2">
+                <div class="ratio-1x1 rounded-4 overflow-hidden">
+                  <img class="img-cover" src="https://picsum.photos/seed/makeup5/800/800" alt="Hala MakeUp Artist">
+                </div>
+                <div class="text-center p-3 pt-2">
+                  <span class="badge badge-soft px-3 py-2">Hala MakeUp Artist</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="card provider-card p-2">
+                <div class="ratio-1x1 rounded-4 overflow-hidden">
+                  <img class="img-cover" src="https://picsum.photos/seed/makeup6/800/800" alt="Hala MakeUp Artist">
+                </div>
+                <div class="text-center p-3 pt-2">
+                  <span class="badge badge-soft px-3 py-2">Hala MakeUp Artist</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER + CTA -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="display-6 fw-bold">Newsletter</h2>
+        <p class="text-muted">Be the first one to know about discounts, offers & events weekly in your mailbox.</p>
+      </div>
+      <form class="d-flex justify-content-center gap-2 mb-5">
+        <div class="input-group" style="max-width:620px;">
+          <span class="input-group-text"><i class="bi bi-envelope-open"></i></span>
+          <input type="email" class="form-control" placeholder="Enter Your E‑Mail">
+        </div>
+        <button class="btn btn-brand px-4">Submit</button>
+      </form>
+
+      <div class="cta-app p-5 shadow-soft">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <h2 class="display-5 fw-bold">Download<br>Henna Mobile App</h2>
+            <p class="lead mb-4">Numquam ut sed autem molestias quo voluptate voluptas. Esse eius dolorum velit molestiae quas voluptas.</p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a class="btn btn-outline-light btn-lg"><i class="bi bi-download me-2"></i>Download iOS</a>
+              <a class="btn btn-light btn-lg"><i class="bi bi-download me-2"></i>Download Android</a>
+            </div>
+          </div>
+          <div class="col-lg-5 mt-4 mt-lg-0">
+            <img class="w-100 rounded-4 img-cover" style="height:380px" src="https://picsum.photos/seed/mobile-app/1200/900" alt="App Preview">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <h2 class="h3 mb-4">About Henna</h2>
+
+      <div class="row g-4 mb-5">
+        <div class="col-lg-4">
+          <div class="feature feature-1 shadow-soft">
+            <h3 class="fw-bold">Objectives</h3>
+            <p class="mt-3">Lorem asdaslorem asdaslorem asdas lorem asdaslorem asdas lorem.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="feature feature-2 shadow-soft">
+            <h3 class="fw-bold">Visions</h3>
+            <p class="mt-3">Lorem asdaslorem asdaslorem asdas lorem asdaslorem asdas lorem.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="feature feature-3 shadow-soft">
+            <h3 class="fw-bold">Missions</h3>
+            <p class="mt-3">Lorem asdaslorem asdaslorem asdas lorem asdaslorem asdas lorem.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="d-flex align-items-start gap-3">
+            <img src="https://picsum.photos/seed/about-icon/220/120" class="rounded-4" alt="About icon" width="170" height="120" style="object-fit:cover">
+            <div>
+              <p>We are a lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="d-flex align-items-center gap-2">
+                <div class="rounded-circle bg-success-subtle d-inline-flex align-items-center justify-content-center" style="width:40px;height:40px">
+                  <i class="bi bi-telephone text-success"></i>
+                </div>
+                <div>
+                  <div class="text-muted small">Contact us</div>
+                  <a href="mailto:evedesign@example.com">evedesign@example.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-6 col-md-4">
+              <h6 class="fw-bold mb-3">Useful Links</h6>
+              <ul class="list-unstyled">
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Posts</a></li>
+                <li><a href="#">Policy</a></li>
+                <li><a href="#">Payment Methods</a></li>
+              </ul>
+            </div>
+            <div class="col-6 col-md-4">
+              <h6 class="fw-bold mb-3">Services</h6>
+              <ul class="list-unstyled">
+                <li><a href="#">Wedding Services</a></li>
+                <li><a href="#">Others</a></li>
+                <li><a href="#">Others</a></li>
+                <li><a href="#">Others</a></li>
+                <li><a href="#">Others</a></li>
+              </ul>
+            </div>
+            <div class="col-12 col-md-4">
+              <h6 class="fw-bold mb-3">Social Media</h6>
+              <ul class="list-unstyled">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">WhatsApp</a></li>
+                <li><a href="#">Telegram</a></li>
+                <li><a href="#">Others</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer id="contact" class="border-top">
+    <div class="container py-4">
+      <div class="d-flex flex-wrap justify-content-between align-items-center">
+        <div class="footer-mini">© 2025, All Rights Reserved — designed by Nabawy</div>
+        <a href="#" class="small">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
